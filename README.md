@@ -15,7 +15,7 @@ Read and plot slow and fast data binary files from centrifuge experiments conduc
 ## Installation
 This package is availably via pypi:
 ```
-pip install DAQdata
+pip install DAQData
 ```
 
 ## Read meta data from the binary file
