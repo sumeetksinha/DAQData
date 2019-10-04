@@ -1,3 +1,8 @@
+DAQData
+=========
+
+### Usage
+
 Read and plot slow and fast data binary files from centrifuge experiments conducted at Center of Geotechnical Modeling at University of California Davis
 
 ### Features
@@ -102,8 +107,6 @@ plt.show();
 ```
 ![example3](https://raw.githubusercontent.com/SumeetSinha/DAQData/master/Input_Motion.png)
 
-### Gallery
-If you make a plot that you are proud of with this tool, send me a png and code and I'll add it to the gallery!
+----
 
-### Life advice
-Please use this tool wisely. Any data visualization techique can be used to elucidate trends in the data, and can be used to manipulate and mislead. The latter is particularly true for broken axes plots, so please try to use them responsibly. Other than that, this software is free to use for any purpose.
+[Sumeet Kumar Sinha](http://www.sumeetksinha.com), send your comments, bugs, issues and features to add at sumeet.kumar507@gmail.com. Please feel free to create issues as https://github.com/SumeetSinha/DAQData/issues
