@@ -50,8 +50,6 @@ Channel_Dictionary            = Data_DAQ.Channel_Dictionary; # returns a diction
 ExcelConfig                   = Data_DAQ.ExcelConfig; # return excel configuration file as a csv string 
 
 ```
-![example1](https://raw.githubusercontent.com/SumeetSinha/DAQData/master/example1.png)
-
 ### Extract data on demand
 
 ```python
@@ -75,8 +73,6 @@ Time_Data,Sensor_Data = Data_DAQ.Extract(Start_Time=0,End_Time=Number_of_Samples
 # print(Sensor_Data.shape) # would return the same length of data as above 
 
 ```
-![example2](https://raw.githubusercontent.com/SumeetSinha/DAQData/master/example2.png)
-
 ### Plot data 
 
 ```python
@@ -109,4 +105,5 @@ plt.show();
 
 ----
 
-[Sumeet Kumar Sinha](http://www.sumeetksinha.com), send your comments, bugs, issues and features to add at sumeet.kumar507@gmail.com. Please feel free to create issues as https://github.com/SumeetSinha/DAQData/issues
+Send your comments, bugs, issues and features to add to [Sumeet Kumar Sinha](http://www.sumeetksinha.com) at sumeet.kumar507@gmail.com. 
+Please feel free to create issues on https://github.com/SumeetSinha/DAQData/issues
