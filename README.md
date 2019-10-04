@@ -1,2 +1,1 @@
-# DAQData
-Read and plot binary data files of centrifuge tests conducted at Center of Geotechnical Modeling at @UCDavis
+Read and plot slow and fast data binary files from centrifuge experiments conducted at Center of Geotechnical Modeling at University of California Davis
