@@ -68,7 +68,7 @@ Sensor_Data = Data_DAQ.Sensor_Data; # 2-D numpy array
 # To extract the whole data, set the start time to be 0 and end time to be Number_of_Samples/Sampling_Rate
 
 Data_DAQ  = DQ.DAQ(Data_File,Extract_Data=False);
-Time_Data,Sensor_Data = Data_DAQ.Extract(Start_Time=0,End_Time=Number_of_Samples/Sampling_Rate);
+Time_Data,Sensor_Data = Data_DAQ.Extract(Start_Time=0,End_Time=Data_DAQ.Number_of_Samples/Data_DAQ.Sampling_Rate);
 
 # print(Sensor_Data.shape) # would return the same length of data as above 
 
@@ -81,9 +81,15 @@ import DAQData as DQ;
 Data_File = "./Binary_Data_Files/07122019@121326@154548@64.4rpm.bin";
 Data_DAQ  = DQ.DAQ(Data_File,Extract_Data=True);
 
+Time_Data  = Data_DAQ.Time_Data; 
+Sensor_Data = Data_DAQ.Sensor_Data;
+
+# get the column index number for the channel
 Channel_Index = Data_DAQ.get_Channel_Index(Channel_Name='ICP1-0');
+# extract the data from the Sensor Data matrix
 ICP10_Data    = Sensor_Data[:,Channel_Index];
-Sensor_Name   = Xdcr_Serial_Numbers_List[Channel_Index];
+# extract the sensor name
+Sensor_Name   = Data_DAQ.Xdcr_Serial_Numbers_List[Channel_Index];
 
 import matplotlib.pyplot as plt;
 
