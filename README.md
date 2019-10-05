@@ -23,7 +23,7 @@ pip install DAQData
 import DAQData as DQ;
 
 # Centrifuge CGM (UC Davis) data file. Can be slow as well as fast data 
-Data_File = "./Binary_Data_Files/07162019@124724@124752@999.0rpm.bin";
+Data_File = "./Binary_Data_Files/07122019@121326@154548@64.4rpm.bin";
 
 # By default the, 'Extract_Data' parameter is set to be True. If the files are
 # very large and only meta data needs to be checked, the data extraction can be
@@ -55,7 +55,7 @@ ExcelConfig                   = Data_DAQ.ExcelConfig; # return excel configurati
 ```python
 import DAQData as DQ;
 
-Data_File = "./Binary_Data_Files/07162019@124724@124752@999.0rpm.bin";
+Data_File = "./Binary_Data_Files/07122019@121326@154548@64.4rpm.bin";
 Data_DAQ  = DQ.DAQ(Data_File,Extract_Data=True);
 
 
@@ -78,7 +78,7 @@ Time_Data,Sensor_Data = Data_DAQ.Extract(Start_Time=0,End_Time=Number_of_Samples
 ```python
 import DAQData as DQ;
 
-Data_File = "./Binary_Data_Files/07162019@124724@124752@999.0rpm.bin";
+Data_File = "./Binary_Data_Files/07122019@121326@154548@64.4rpm.bin";
 Data_DAQ  = DQ.DAQ(Data_File,Extract_Data=True);
 
 Channel_Index = Data_DAQ.get_Channel_Index(Channel_Name='ICP1-0');
