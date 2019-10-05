@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="DAQData",
-    version="2.0",
+    version="2.1",
     author="Sumeet Kumar Sinha",
     author_email="sumeet.kumar507@gmail.com",
     description="Read and plot slow and fast data binary files from centrifuge experiments conducted at Center of Geotechnical Modeling at University of California Davis",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/SumeetSinha/DAQdata",
+    url="https://github.com/SumeetSinha/DAQData",
     packages=setuptools.find_packages(),
     classifiers=[
         "Intended Audience :: Science/Research",
@@ -27,6 +27,6 @@ setuptools.setup(
 
     install_requires=['matplotlib'],
 
-    py_modules=["DAQdata"],
+    py_modules=["DAQData"],
 )
 
