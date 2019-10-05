@@ -10,32 +10,10 @@ import struct
 import re
 import binascii
 import numpy as np
-import array
-import matplotlib
 import matplotlib.pyplot as plt
 import warnings
 import math
 warnings.filterwarnings("ignore")
-
-########################################
-# Signal processing 
-########################################
-import scipy.signal as signal
-
-#####################################
-# For Dataframe : convert string to StringIO
-#####################################
-import sys
-if sys.version_info[0] < 3: 
-    from StringIO import StringIO
-else:
-    from io import StringIO
-import pandas
-
-# #######################################
-# # User defined modules
-# import BrowseFolderWidget
-# #######################################
 
 class DAQ(object):
     """DAQ reads the binary data file produced by Center of Geotechnical Engineering UC Davis. 
