@@ -10,7 +10,7 @@ slow and fast data files
 import DAQData as DQ;
 
 # Centrifuge CGM (UC Davis) data file. Can be slow as well as fast data 
-Data_File = "../Binary_Data_Files/07122019@121326@154548@64.4rpm.bin";
+Data_File = "./Binary_Data_Files/07122019@121326@154548@64.4rpm.bin";
 
 
 # By default the, 'Extract_Data' parameter is set to be True. If the files are
