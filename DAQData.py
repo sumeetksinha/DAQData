@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import warnings
 import math
+import pandas as pd
 warnings.filterwarnings("ignore")
 
 class DAQ(object):
@@ -25,10 +26,10 @@ class DAQ(object):
         Sampling_Rate                 = 1;
         Number_of_Channels            = 0;
         Number_of_Hardware_Channels   = 0;
-        Number_of_Xdcr_Serial_Numbers = 0;
+        Number_of_Sensors = 0;
         Channel_List                  = [];
         Hardware_Channel_List         = [];
-        Xdcr_Serial_Numbers_List      = [];
+        Sensor_List      = [];
         Number_of_Samples             = 0;
         Data_Length                   = 0;
         Channel_Dictionary            = {};
@@ -77,10 +78,10 @@ class DAQ(object):
                 newLine = ((f.readline()).strip());
             ## Read the Xdcr Serial Numbers
             newLine = ((f.readline()).strip()).decode();
-            Xdcr_Serial_Numbers_List = newLine.split(',');
-            Number_of_Xdcr_Serial_Numbers = len(Xdcr_Serial_Numbers_List);
-            Xdcr_Serial_Numbers_List = Xdcr_Serial_Numbers_List[0:Number_of_Channels];
-            # print Xdcr_Serial_Numbers_List
+            Sensor_List = newLine.split(',');
+            Number_of_Sensors = len(Sensor_List);
+            Sensor_List = Sensor_List[0:Number_of_Channels];
+            # print Sensor_List
             ##################################################
 
             ##################################################
@@ -153,23 +154,22 @@ class DAQ(object):
                 Channel_Dictionary['TIME'] = -1;
 
             # print(Channel_Dictionary);
-           
+          
         self.FileName = FileName;
         self.Sampling_Rate                 = Sampling_Rate                ;
         self.Number_of_Channels            = Number_of_Channels           ;
         self.Number_of_Hardware_Channels   = Number_of_Hardware_Channels  ;
-        self.Number_of_Xdcr_Serial_Numbers = Number_of_Xdcr_Serial_Numbers;
+        self.Number_of_Sensors             = Number_of_Sensors;
         self.Channel_List                  = Channel_List                 ;
         self.Hardware_Channel_List         = Hardware_Channel_List        ;
-        self.Xdcr_Serial_Numbers_List      = Xdcr_Serial_Numbers_List     ;
+        self.Sensor_List                   = Sensor_List     ;
         self.Number_of_Samples             = Number_of_Samples            ;
         self.Data_Length                   = Data_Length                  ;
         self.Channel_Dictionary            = Channel_Dictionary           ;
         self.ExcelConfig                   = ExcelConfig                  ;
         if(Extract_Data):
-            self.Time_Data, self.Sensor_Data   = self.Extract(0,int(self.Number_of_Samples/self.Sampling_Rate),Reading_Rate=500000);
+            self.Sensor_Data   = self.Extract(0,int(self.Number_of_Samples/self.Sampling_Rate),Reading_Rate=500000);
         else:
-            self.Time_Data   = [];
             self.Sensor_Data = [];
 
 
@@ -181,10 +181,10 @@ class DAQ(object):
         Message = Message + "Sampling_Rate:                   " + str(self.Sampling_Rate) + "\n";
         Message = Message + "Number_of_Channels:              " + str(self.Number_of_Channels) + "\n";
         Message = Message + "Number_of_Hardware_Channels:     " + str(self.Number_of_Hardware_Channels) + "\n";
-        Message = Message + "Number_of_Xdcr_Serial_Numbers:   " + str(self.Number_of_Xdcr_Serial_Numbers) + "\n";
+        Message = Message + "Number_of_Sensors:               " + str(self.Number_of_Sensors) + "\n";
         Message = Message + "Channel_List:                    " + str(self.Channel_List) + "\n";
         Message = Message + "Hardware_Channel_List:           " + str(self.Hardware_Channel_List) + "\n";
-        Message = Message + "Xdcr_Serial_Numbers_List:        " + str(self.Xdcr_Serial_Numbers_List) + "\n";
+        Message = Message + "Sensor_List:                     " + str(self.Sensor_List) + "\n";
         Message = Message + "Number_of_Samples:               " + str(self.Number_of_Samples) + "\n";
         Message = Message + "Data_Length:                     " + str(self.Data_Length) + "\n";
         Message = Message + "Channel_Dictionary:              " + str(self.Channel_Dictionary) + "\n";
@@ -418,13 +418,15 @@ class DAQ(object):
                     break ;
                    
         Sensor_Data = Sensor_Data.reshape(int(len(Sensor_Data)/self.Number_of_Channels),self.Number_of_Channels); 
+        Sensor_Data_dF         = pd.DataFrame(Sensor_Data)
+        Sensor_Data_dF.columns = self.Channel_List
+
         
-        if(self.Sampling_Rate==1):
-            Time = Sensor_Data[:,0]
-#         print (Sensor_Data);
-#         print (Sensor_Data.shape);
-#         print (Time.shape);
-        return Time, Sensor_Data
+        if(self.Sampling_Rate!=1):
+            Sensor_Data_dF['TIME'] = Time;
+            Sensor_Data_dF = Sensor_Data_dF.reindex_axis(['TIME'] + list(Sensor_Data_dF.columns.drop(['TIME'])), axis=1)
+
+        return Sensor_Data_dF
 
 
     def get_Channel_Index(self, Channel_Name):
