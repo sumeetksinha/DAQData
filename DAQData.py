@@ -424,7 +424,7 @@ class DAQ(object):
         
         if(self.Sampling_Rate!=1):
             Sensor_Data_dF['TIME'] = Time;
-            Sensor_Data_dF = Sensor_Data_dF.reindex_axis(['TIME'] + list(Sensor_Data_dF.columns.drop(['TIME'])), axis=1)
+            Sensor_Data_dF = Sensor_Data_dF.reindex(['TIME'] + list(Sensor_Data_dF.columns.drop(['TIME'])), axis=1)
 
         return Sensor_Data_dF
 
