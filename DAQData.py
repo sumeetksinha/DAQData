@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import warnings
 import math
 import pandas as pd
+from io import StringIO
 warnings.filterwarnings("ignore")
 
 class DAQ(object):
@@ -97,9 +98,10 @@ class DAQ(object):
             Num_of_excel_config = Number_of_Channels;
             if(Sampling_Rate==1):
                 Num_of_excel_config = Num_of_excel_config-1;
-            for i in range(0,Num_of_excel_config):
+            for i in range(0,Num_of_excel_config+1):
                 newLine = (f.readline()).strip();
                 ExcelConfig = ExcelConfig +newLine.decode() +'\n';
+            ExcelConfigData = StringIO(ExcelConfig);
             ## Read the excelconfig of the file here
             ##################################################
 
@@ -159,14 +161,14 @@ class DAQ(object):
         self.Sampling_Rate                 = Sampling_Rate                ;
         self.Number_of_Channels            = Number_of_Channels           ;
         self.Number_of_Hardware_Channels   = Number_of_Hardware_Channels  ;
-        self.Number_of_Sensors             = Number_of_Sensors;
+        self.Number_of_Sensors             = Number_of_Sensors            ;
         self.Channel_List                  = Channel_List                 ;
         self.Hardware_Channel_List         = Hardware_Channel_List        ;
-        self.Sensor_List                   = Sensor_List     ;
+        self.Sensor_List                   = Sensor_List                  ;
         self.Number_of_Samples             = Number_of_Samples            ;
         self.Data_Length                   = Data_Length                  ;
         self.Channel_Dictionary            = Channel_Dictionary           ;
-        self.ExcelConfig                   = ExcelConfig                  ;
+        self.ExcelConfig                   = pd.read_csv(ExcelConfigData, sep=",");
         if(Extract_Data):
             self.Sensor_Data   = self.Extract(0,int(self.Number_of_Samples/self.Sampling_Rate),Reading_Rate=500000);
         else:

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="DAQData",
-    version="2.2",
+    version="2.4",
     author="Sumeet Kumar Sinha",
     author_email="sumeet.kumar507@gmail.com",
     description="Read and plot slow and fast data binary files from centrifuge experiments conducted at Center of Geotechnical Modeling at University of California Davis",
@@ -25,7 +25,7 @@ setuptools.setup(
     
     keywords='Centrifuge, Center of Geotechnical MOdeling, CGM, UC Davis, Binary Data',
 
-    install_requires=['matplotlib','pandas'],
+    install_requires=['matplotlib','pandas','StringIO'],
 
     py_modules=["DAQData"],
 )

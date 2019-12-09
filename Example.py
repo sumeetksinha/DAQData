@@ -42,6 +42,8 @@ Number_of_Samples             = Data_DAQ.Number_of_Samples; # gets the total num
 Data_Length                   = Data_DAQ.Data_Length; # gets the total data length in the binary file. Number_of_Samples*Number_of_sensors
 ExcelConfig                   = Data_DAQ.ExcelConfig; # return excel configuration file as a csv string 
 
+# print(Number_of_Channels)
+# print(ExcelConfig.head())
 #####################################################################################################################
 # Extract data on demand
 #####################################################################################################################
