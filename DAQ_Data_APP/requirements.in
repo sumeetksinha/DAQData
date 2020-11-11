@@ -1,0 +1,9 @@
+ipywidgets
+array
+matplotlib
+warnings
+traitlets
+IPython
+tkinter 
+StringIO
+pandas
