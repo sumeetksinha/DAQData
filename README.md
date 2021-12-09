@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/212872540.svg)](https://zenodo.org/badge/latestdoi/212872540) [![pypi package](https://img.shields.io/pypi/v/DAQData.svg)](https://pypi.org/project/DAQData/)
+
+
+
 DAQData
 =========
 
