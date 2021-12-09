@@ -3,7 +3,7 @@ DAQData
 
 ### Usage
 
-Read and plot slow and fast data binary files from centrifuge experiments conducted at Center for Geotechnical Modeling at University of California Davis
+A python module to read and plot slow and fast data binary files from centrifuge experiments conducted at Center for Geotechnical Modeling at University of California Davis
 
 ### Features
 * Reads slow and fast data binary files.
